@@ -1,17 +1,19 @@
+.terraform
 .idea
+node_modules/*
 
-# vim swap files
-**/*.swp
-
+# Local .terraform directories
 **/.terraform/*
 
-# k8s or terraform secrets
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# k8s secrets
 **/secrets/*
 
 # Local .terragrunt directories
 **/.terragrunt-cache/*
 
-# Ignore private keys
-*.pem
-
 .DS_Store
+__pycache__
