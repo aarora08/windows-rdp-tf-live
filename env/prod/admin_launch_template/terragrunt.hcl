@@ -9,7 +9,7 @@ include {
 }
 
 locals {
-  semver       = "1.0.0"
+  semver       = "1.1.0"
   account_vars = read_terragrunt_config(find_in_parent_folders("account.hcl")).locals
   name         = "${local.account_vars.account_name}-admin-template-${local.account_vars.environment}"
 }
