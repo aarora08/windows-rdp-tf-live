@@ -9,7 +9,7 @@ include {
 }
 
 locals {
-  semver       = "1.0.0"
+  semver       = "1.2.0"
   account_vars = read_terragrunt_config(find_in_parent_folders("account.hcl")).locals
   name         = "${local.account_vars.account_name}-admin-template-${local.account_vars.environment}"
 }
@@ -32,6 +32,6 @@ inputs = {
   app_name           = local.account_vars.account_name
   region             = local.account_vars.region
   launch_template_id = dependency.user_launch_template.outputs.launch_template_id
-  size               = 3
+  size               = 1
   name               = "user"
 }

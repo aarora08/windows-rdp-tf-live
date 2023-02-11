@@ -9,32 +9,30 @@ include {
 }
 
 locals {
-  semver       = "1.1.0"
+  semver       = "1.2.0"
   account_vars = read_terragrunt_config(find_in_parent_folders("account.hcl")).locals
   name         = "${local.account_vars.account_name}-admin-template-${local.account_vars.environment}"
 }
 
 terraform {
-  source = "git@github.com:aarora08/windows-rdp-tf-modules.git//modules/launch_template?ref=v${local.semver}"
+  source = "git@github.com:aarora08/windows-rdp-tf-modules.git//modules/ec2_launch_template?ref=v${local.semver}"
 }
 
 dependency "network" {
   config_path = "../network"
 }
 
-dependency "shared_key_pair" {
-  config_path = "../shared_key_pair"
+dependency "user_launch_template" {
+  config_path = "../user_launch_template_from_snapshot"
 }
 
 inputs = {
-  account_id         = local.account_vars.account_id
-  app_env            = local.account_vars.environment
-  app_name           = local.account_vars.account_name
-  region             = local.account_vars.region
-  name               = local.name
-  image_id           = "ami-0253a8101a3b88872"
-  volume_size        = 60
-  security_group_ids = [dependency.network.outputs.security_group_ids["server_runtime"]]
-  subnet_id          = dependency.network.outputs.private_subnets[0]
-  key_name           = dependency.shared_key_pair.outputs.key_name
+  account_id                   = local.account_vars.account_id
+  app_env                      = local.account_vars.environment
+  app_name                     = local.account_vars.account_name
+  region                       = local.account_vars.region
+  launch_template_id           = dependency.user_launch_template.outputs.launch_template_id
+  size                         = 2
+  name                         = "user"
+  name_suffix_count_start_from = 2
 }
