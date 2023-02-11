@@ -26,6 +26,10 @@ dependency "shared_key_pair" {
   config_path = "../shared_key_pair"
 }
 
+dependency "user_primary_instance" {
+  config_path = "../user_instances"
+}
+
 inputs = {
   account_id         = local.account_vars.account_id
   app_env            = local.account_vars.environment
@@ -35,6 +39,5 @@ inputs = {
   security_group_ids = [dependency.network.outputs.security_group_ids["server_runtime"]]
   subnet_id          = dependency.network.outputs.private_subnets[0]
   key_name           = dependency.shared_key_pair.outputs.key_name
-  #  snapshot_id        = "snap-08878f50772d722d2"
-  volume_id = "vol-0dd2d03468f403c8c"
+  volume_id          = dependency.user_primary_instance.outputs.volume_id[0]
 }
