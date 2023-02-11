@@ -15,7 +15,7 @@ locals {
 }
 
 terraform {
-    source = "git@github.com:aarora08/windows-rdp-tf-modules.git//modules/ec2_launch_template?ref=v${local.semver}"
+  source = "git@github.com:aarora08/windows-rdp-tf-modules.git//modules/ec2_launch_template?ref=v${local.semver}"
 }
 
 dependency "network" {
