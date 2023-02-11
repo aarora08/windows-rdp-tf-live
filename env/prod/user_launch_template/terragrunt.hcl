@@ -9,12 +9,13 @@ include {
 }
 
 locals {
+  semver       = "1.0.0"
   account_vars = read_terragrunt_config(find_in_parent_folders("account.hcl")).locals
   name         = "${local.account_vars.account_name}-user-template-${local.account_vars.environment}"
 }
 
 terraform {
-  source = "../../../../tf-modules//modules/launch_template"
+  source = "git@github.com:aarora08/windows-rdp-tf-modules.git//modules/launch_template?ref=v${local.semver}"
 }
 
 dependency "network" {

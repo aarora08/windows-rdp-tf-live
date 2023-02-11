@@ -9,12 +9,13 @@ include {
 }
 
 locals {
+  semver       = "1.0.0"
   account_vars = read_terragrunt_config(find_in_parent_folders("account.hcl")).locals
   vpc_name     = "${local.account_vars.account_name}-vpc-${local.account_vars.environment}"
 }
 
 terraform {
-  source = "../../../../tf-modules//modules/vpc"
+  source = "git@github.com:aarora08/windows-rdp-tf-modules.git//modules/vpc?ref=v${local.semver}"
 }
 
 inputs = {
