@@ -1,0 +1,5 @@
+app_name   = "connect-tax"
+app_env    = "prod"
+region     = "us-west-1"
+account_id = "413176376178"
+bucket     = "tfstate"

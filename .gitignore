@@ -1,0 +1,19 @@
+.terraform
+.idea
+node_modules/*
+
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# k8s secrets
+**/secrets/*
+
+# Local .terragrunt directories
+**/.terragrunt-cache/*
+
+.DS_Store
+__pycache__
