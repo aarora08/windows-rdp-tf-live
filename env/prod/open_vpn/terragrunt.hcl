@@ -20,6 +20,10 @@ dependency "network" {
   config_path = "../network"
 }
 
+dependency "shared_key_pair" {
+  config_path = "../shared_key_pair"
+}
+
 inputs = {
   account_id         = local.account_vars.account_id
   app_env            = local.account_vars.environment
@@ -28,4 +32,5 @@ inputs = {
   instance_ami       = "ami-043db3ad3156c6358"
   security_group_ids = [dependency.network.outputs.security_group_ids["vpn"]]
   subnet_id          = dependency.network.outputs.public_subnets[0]
+  key_name           = dependency.shared_key_pair.outputs.key_name
 }
