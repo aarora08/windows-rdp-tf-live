@@ -1,0 +1,17 @@
+.idea
+
+# vim swap files
+**/*.swp
+
+**/.terraform/*
+
+# k8s or terraform secrets
+**/secrets/*
+
+# Local .terragrunt directories
+**/.terragrunt-cache/*
+
+# Ignore private keys
+*.pem
+
+.DS_Store

@@ -1,0 +1,15 @@
+{
+  "name": "tf-live",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:aarora08/windows-rdp-tf-live.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/github": "^7.2.3",
+    "conventional-changelog-conventionalcommits": "^4.4.0"
+  }
+}
