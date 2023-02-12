@@ -14,7 +14,8 @@ locals {
 }
 
 terraform {
-  source = "git@github.com:aarora08/windows-rdp-tf-modules.git//modules/network?ref=v${local.semver}"
+#  source = "git@github.com:aarora08/windows-rdp-tf-modules.git//modules/network?ref=v${local.semver}"
+  source = "../../../../tf-modules//modules/network"
 }
 
 dependency "vpc" {
