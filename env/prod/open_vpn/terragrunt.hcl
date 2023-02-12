@@ -9,7 +9,7 @@ include {
 }
 
 locals {
-  semver       = "1.0.0"
+  semver       = "1.2.1"
   account_vars = read_terragrunt_config(find_in_parent_folders("account.hcl")).locals
 }
 
@@ -30,8 +30,9 @@ inputs = {
   app_env            = local.account_vars.environment
   app_name           = local.account_vars.account_name
   region             = local.account_vars.region
-  instance_ami       = "ami-043db3ad3156c6358"
-  security_group_ids = [dependency.network.outputs.security_group_ids["vpn"]]
+  instance_ami       = "ami-0ce1d8c91d5b9ee92"
+  security_group_ids = [dependency.network.outputs.security_group_ids["openvpn"]]
   subnet_id          = dependency.network.outputs.public_subnets[0]
   key_name           = dependency.shared_key_pair.outputs.key_name
+  instance_type      = "t2.small"
 }
